@@ -23,11 +23,12 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 52.6843
-height = 28.9209
+radius = 27.2283
+height = 12.586
 
 [node name="Player" type="Area2D" index="0"]
 
+position = Vector2( -0.643921, 0.429283 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -36,6 +37,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -43,6 +45,7 @@ SPEED = 400
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "right"
 _sections_unfolded = [ "Transform" ]
@@ -50,5 +53,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 
 

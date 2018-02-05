@@ -8,6 +8,7 @@ func _ready():
 	screenSize = get_viewport_rect().size
 	
 func _process(delta):
+	hide()
 	move(delta)
 	
 func move(delta):
@@ -33,3 +34,13 @@ func move(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screenSize.x)
 	position.y = clamp(position.y, 0, screenSize.y)
+
+func _on_Player_body_entered( body ):
+	hide()
+	emit_signal("hit")
+	call_deferred("set_monitoring", false)
+
+func start(pos):
+	position = pos
+	show()
+	monitoring = true
